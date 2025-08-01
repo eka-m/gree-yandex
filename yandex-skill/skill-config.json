@@ -1,0 +1,174 @@
+{
+  "provider_info": {
+    "name": "Gree HVAC Provider",
+    "description": "Провайдер умных устройств для управления кондиционерами Gree",
+    "version": "1.0.0",
+    "category": "smart_home",
+    "author": "Gree HVAC Team",
+    "support_email": "support@gree-hvac.com"
+  },
+  "oauth": {
+    "client_id": "your-client-id",
+    "client_secret": "your-client-secret",
+    "redirect_uri": "https://your-domain.com/oauth/callback",
+    "scope": "home:read home:write",
+    "authorization_url": "https://oauth.yandex.ru/authorize",
+    "token_url": "https://oauth.yandex.ru/token"
+  },
+  "adapter_api": {
+    "base_url": "https://your-domain.com/v1.0",
+    "endpoints": {
+      "devices": "/user/devices",
+      "query": "/user/devices/query",
+      "action": "/user/devices/action"
+    },
+    "timeout": 5000,
+    "retry_attempts": 3
+  },
+  "provider_iot_api": {
+    "base_url": "http://localhost:3001",
+    "endpoints": {
+      "status": "/api/status",
+      "command": "/api/command",
+      "connect": "/api/connect",
+      "disconnect": "/api/disconnect"
+    }
+  },
+  "devices": [
+    {
+      "id": "gree-ac-1",
+      "name": "Кондиционер Gree",
+      "type": "devices.types.thermostat.ac",
+      "room": "Гостиная",
+      "capabilities": [
+        {
+          "type": "devices.capabilities.on_off",
+          "retrievable": true,
+          "parameters": {
+            "split": false
+          }
+        },
+        {
+          "type": "devices.capabilities.range",
+          "retrievable": true,
+          "parameters": {
+            "instance": "temperature",
+            "unit": "unit.temperature.celsius",
+            "range": {
+              "min": 16,
+              "max": 30,
+              "precision": 1
+            }
+          }
+        },
+        {
+          "type": "devices.capabilities.mode",
+          "retrievable": true,
+          "parameters": {
+            "instance": "thermostat",
+            "modes": [
+              { "value": "auto" },
+              { "value": "cool" },
+              { "value": "heat" },
+              { "value": "dry" },
+              { "value": "fan_only" }
+            ]
+          }
+        },
+        {
+          "type": "devices.capabilities.mode",
+          "retrievable": true,
+          "parameters": {
+            "instance": "fan_speed",
+            "modes": [
+              { "value": "auto" },
+              { "value": "low" },
+              { "value": "medium" },
+              { "value": "high" }
+            ]
+          }
+        },
+        {
+          "type": "devices.capabilities.toggle",
+          "retrievable": true,
+          "parameters": {
+            "instance": "lights"
+          }
+        },
+        {
+          "type": "devices.capabilities.toggle",
+          "retrievable": true,
+          "parameters": {
+            "instance": "swing"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "type": "devices.properties.float",
+          "retrievable": true,
+          "parameters": {
+            "instance": "temperature",
+            "unit": "unit.temperature.celsius"
+          }
+        }
+      ]
+    }
+  ],
+  "scenarios": {
+    "account_linking": {
+      "description": "Связка аккаунта пользователя с провайдером",
+      "steps": [
+        "Пользователь открывает приложение 'Дом с Алисой'",
+        "Нажимает '+' в правом верхнем углу",
+        "Выбирает 'Устройство умного дома'",
+        "Находит навык 'Gree HVAC'",
+        "Связывает аккаунты через OAuth"
+      ]
+    },
+    "device_discovery": {
+      "description": "Обнаружение устройств пользователя",
+      "steps": [
+        "После связки аккаунтов автоматически запускается обновление",
+        "Yandex Smart Home отправляет запрос на /user/devices",
+        "Provider возвращает список доступных устройств"
+      ]
+    },
+    "device_status": {
+      "description": "Получение статуса устройства",
+      "steps": [
+        "Пользователь открывает экран управления устройством",
+        "Yandex Smart Home отправляет запрос на /user/devices/query",
+        "Provider возвращает актуальный статус устройства"
+      ]
+    },
+    "device_control": {
+      "description": "Управление устройством",
+      "steps": [
+        "Пользователь отправляет команду (через приложение или голос)",
+        "Yandex Smart Home отправляет запрос на /user/devices/action",
+        "Provider выполняет команду через IOT API",
+        "Устройство изменяет состояние"
+      ]
+    }
+  },
+  "deployment": {
+    "server": {
+      "type": "vps",
+      "requirements": {
+        "node": ">=16.0.0",
+        "memory": "512MB",
+        "storage": "1GB"
+      }
+    },
+    "ssl": {
+      "required": true,
+      "provider": "letsencrypt"
+    },
+    "monitoring": {
+      "health_check_interval": "30s",
+      "log_retention": "30d",
+      "request_logging": true
+    }
+  }
+} 

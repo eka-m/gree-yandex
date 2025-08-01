@@ -1,0 +1,97 @@
+{
+  "name": "Кондиционер Gree",
+  "description": "Управление кондиционером Gree через голосовые команды",
+  "version": "1.0.0",
+  "intents": [
+    {
+      "name": "turn_on_ac",
+      "slots": [],
+      "utterances": [
+        "включи кондиционер",
+        "включи кондиционер Gree",
+        "запусти кондиционер",
+        "включи охлаждение",
+        "включи обогрев"
+      ]
+    },
+    {
+      "name": "turn_off_ac",
+      "slots": [],
+      "utterances": [
+        "выключи кондиционер",
+        "выключи кондиционер Gree",
+        "останови кондиционер",
+        "отключи кондиционер"
+      ]
+    },
+    {
+      "name": "set_temperature",
+      "slots": [
+        {
+          "name": "temperature",
+          "type": "YANDEX.NUMBER"
+        }
+      ],
+      "utterances": [
+        "установи температуру {temperature}",
+        "поставь температуру {temperature}",
+        "сделай температуру {temperature}",
+        "температура {temperature} градусов"
+      ]
+    },
+    {
+      "name": "set_mode",
+      "slots": [
+        {
+          "name": "mode",
+          "type": "YANDEX.STRING"
+        }
+      ],
+      "utterances": [
+        "включи режим {mode}",
+        "поставь режим {mode}",
+        "переключи на {mode}",
+        "режим {mode}"
+      ]
+    },
+    {
+      "name": "set_fan_speed",
+      "slots": [
+        {
+          "name": "speed",
+          "type": "YANDEX.STRING"
+        }
+      ],
+      "utterances": [
+        "вентилятор {speed}",
+        "скорость вентилятора {speed}",
+        "поставь вентилятор на {speed}"
+      ]
+    },
+    {
+      "name": "toggle_lights",
+      "slots": [],
+      "utterances": [
+        "включи подсветку",
+        "выключи подсветку",
+        "переключи подсветку",
+        "подсветка"
+      ]
+    },
+    {
+      "name": "get_status",
+      "slots": [],
+      "utterances": [
+        "статус кондиционера",
+        "что с кондиционером",
+        "какая температура",
+        "температура в комнате",
+        "статус Gree"
+      ]
+    }
+  ],
+  "webhook": {
+    "url": "https://your-domain.com/yandex-webhook",
+    "timeout": 5000
+  }
+} 
