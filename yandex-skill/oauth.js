@@ -10,9 +10,9 @@ const users = new Map()
 
 // Конфигурация OAuth
 const OAUTH_CONFIG = {
-  client_id: process.env.YANDEX_CLIENT_ID || 'your-client-id',
-  client_secret: process.env.YANDEX_CLIENT_SECRET || 'your-client-secret',
-  redirect_uri: process.env.REDIRECT_URI || 'https://your-domain.com/oauth/callback',
+  client_id: process.env.YANDEX_CLIENT_ID || '1c2c42c5c0d34e25b4ed2b9e8393fa7f',
+  client_secret: process.env.YANDEX_CLIENT_SECRET || '3a558ad9c9084bd99cca4114b3ee64e5',
+  redirect_uri: process.env.REDIRECT_URI || 'https://gree.thequark.dev/oauth/callback',
   scope: 'home:read home:write'
 }
 

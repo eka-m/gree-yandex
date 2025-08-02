@@ -92,10 +92,10 @@ Gree Кондиционер
 
 #### Endpoint URL
 ```
-https://your-domain.com/v1.0
+https://gree.thequark.dev/v1.0
 ```
 
-**Важно:** Замените `your-domain.com` на ваш реальный домен!
+**Важно:** Используйте ваш домен `gree.thequark.dev`!
 
 #### Тип доступа
 - **Для тестирования:** Приватный
@@ -191,7 +191,7 @@ Gree HVAC Smart Home
 
 #### Redirect URI
 ```
-https://your-domain.com/oauth/callback
+https://gree.thequark.dev/oauth/callback
 ```
 
 #### Scope
@@ -207,7 +207,7 @@ home:read home:write
 ```bash
 YANDEX_CLIENT_ID=ваш-client-id
 YANDEX_CLIENT_SECRET=ваш-client-secret
-REDIRECT_URI=https://your-domain.com/oauth/callback
+REDIRECT_URI=https://gree.thequark.dev/oauth/callback
 ```
 
 ## 🧪 Шаг 8: Тестирование
@@ -221,21 +221,21 @@ npm run test
 ### Проверка endpoints
 ```bash
 # Health check
-curl -I https://your-domain.com/v1.0/
+curl -I https://gree.thequark.dev/v1.0/
 
 # Device discovery
 curl -H "Authorization: Bearer YOUR_TOKEN" \
      -H "X-Request-Id: test-123" \
-     https://your-domain.com/v1.0/user/devices
+     https://gree.thequark.dev/v1.0/user/devices
 ```
 
 ### Проверка SSL сертификата
 ```bash
 # Проверка через SSL Labs
-curl -I https://your-domain.com/v1.0
+curl -I https://gree.thequark.dev/v1.0
 
 # Проверка через OpenSSL
-openssl s_client -connect your-domain.com:443 -servername your-domain.com
+openssl s_client -connect gree.thequark.dev:443 -servername gree.thequark.dev
 ```
 
 ## 📋 Шаг 9: Чек-лист перед отправкой

@@ -38,9 +38,10 @@ app.get('/', (req, res) => {
         revoke: '/oauth/revoke'
       },
       smart_home: {
-        devices: '/v1.0/user/devices',
-        query: '/v1.0/user/devices/query',
-        action: '/v1.0/user/devices/action'
+        devices: '/v1.0/user/devices (POST)',
+        query: '/v1.0/user/devices/query (POST)',
+        action: '/v1.0/user/devices/action (POST)',
+        unlink: '/v1.0/user/devices/unlink (POST)'
       },
       health: '/health'
     }
@@ -76,8 +77,9 @@ app.listen(PORT, () => {
   console.log(`❤️ Health Check: http://localhost:${PORT}/health`)
   console.log('')
   console.log('📋 Для настройки в Яндекс Developer Console:')
-  console.log(`   OAuth Redirect URI: http://localhost:${PORT}/oauth/callback`)
-  console.log(`   Smart Home API URL: http://localhost:${PORT}/v1.0`)
+  console.log(`   OAuth Redirect URI: https://gree.thequark.dev/oauth/callback`)
+  console.log(`   Smart Home API URL: https://gree.thequark.dev/v1.0`)
+  console.log(`   Client ID: 1c2c42c5c0d34e25b4ed2b9e8393fa7f`)
 })
 
 export default app 

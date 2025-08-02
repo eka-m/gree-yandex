@@ -198,7 +198,7 @@ app.head('/v1.0/', (req, res) => {
 })
 
 // 1. Получение списка устройств пользователя (Device Discovery)
-app.get('/v1.0/user/devices', authenticateToken, async (req, res) => {
+app.post('/v1.0/user/devices', authenticateToken, async (req, res) => {
   const requestId = req.headers['x-request-id']
   const userId = req.user.id
   
@@ -498,7 +498,7 @@ app.post('/v1.0/user/devices/action', authenticateToken, async (req, res) => {
 })
 
 // 4. Разъединение аккаунтов (Account Unlinking)
-app.post('/v1.0/user/unlink', authenticateToken, (req, res) => {
+app.post('/v1.0/user/devices/unlink', authenticateToken, (req, res) => {
   const requestId = req.headers['x-request-id']
   const userId = req.user.id
   
